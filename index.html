@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Multi-Container Website</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="notification" class="notification d-none"></div>
+
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <img src="logo.png" alt="Tindahan ni Angel Logo" class="logo-img">
+        <a href="#hero">Home</a>
+        <a href="#burgers">Burgers</a>
+        <a href="#drinks">Drinks</a>
+        <a href="#dessert">Dessert</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- siksyon -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <h2>...</h2>
+      <p>ayaw sa ni hilabti ako ra ani</p>
+      <a href="#products" class="btn">Explore Products</a>
+    </div>
+  </section>
+
+  <!-- borgir siksyon -->
+  <section class="burgers" id="burgers">
+    <div class="container">
+      <h2>Burgers</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="Bacon Burger.webp" alt="Product 1">
+          <h3>Bacon Burger</h3>
+          <p>95₱</p>
+          <p id="stock1">In Stock: 30</p>
+          <button onclick="addToCart(1)">Add to Cart</button>        
+        </div>
+        <div class="product-card">
+          <img src="Burger Combo.jpg" alt="Product 2">
+          <h3>Burger Combo</h3>
+          <p>119₱</p>
+          <p id="stock2">In Stock: 90</p>
+          <button onclick="addToCart(2)">Add to Cart</button>        
+        </div>
+        <div class="product-card">
+          <img src="Cheese Burger.png" alt="Product 3">
+          <h3>Cheese Burger</h3>
+          <p>99₱</p>
+          <p id="stock3">In Stock: 50</p>
+          <button onclick="addToCart(3)">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="Classic Burgers.png" alt="Product 4">
+            <h3>Classic Burger</h3>
+            <p>120₱</p>
+            <p id="stock4">In Stock: 20</p>
+            <button onclick="addToCart(4)">Add to Cart</button>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- drinks siksyon -->
+  <section class="drinks" id="drinks">
+    <div class="container">
+        <h2>Drinks</h2>
+        <div class="product-grid">
+          <div class="product-card">
+            <img src="Iced Tea.png" alt="Product 5">
+            <h3>Iced Tea</h3>
+            <p>20₱</p>
+            <p id="stock5">In Stock: 50</p>
+            <button onclick="addToCart(5)">Add to Cart</button>
+          </div>
+          <div class="product-card">
+            <img src="Pepsi.png" alt="Product 6">
+            <h3>Pepsi</h3>
+            <p>30₱</p>
+            <p id="stock6">In Stock: 50</p>
+            <button onclick="addToCart(6)">Add to Cart</button>
+          </div>
+          <div class="product-card">
+            <img src="Fruit Shake.png" alt="Product 7">
+            <h3>Fruit Shake</h3>
+            <p>35₱</p>
+            <p id="stock7">In Stock: 100</p>
+            <button onclick="addToCart(7)">Add to Cart</button>
+          </div>
+          <div class="product-card">
+              <img src="Blue Lemonade.png" alt="Product 8">
+              <h3>Blue Lemonade</h3>
+              <p>25₱</p>
+              <p id="stock8">In Stock: 30</p>
+              <button onclick="addToCart(8)">Add to Cart</button>
+  
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <!-- dessert siksyon -->
+  <section class="dessert" id="dessert">
+    <div class="container">
+        <h2>Desserts</h2>
+        <div class="product-grid">
+          <div class="product-card">
+            <img src="Ice Cream.png" alt="Product 9">
+            <h3>Ice Cream</h3>
+            <p>45₱</p>
+            <p id="stock9">In Stock: 50</p>
+            <button onclick="addToCart(9)">Add to Cart</button>
+          </div>
+          <div class="product-card">
+            <img src="Cake.png" alt="Product 10">
+            <h3>Cake</h3>
+            <p>30₱</p>
+            <p id="stock10">In Stock: 50</p>
+            <button onclick="addToCart(10)">Add to Cart</button>          
+          </div>
+          <div class="product-card">
+            <img src="Halo-Halo.png" alt="Product 11">
+            <h3>Halo-Halo</h3>
+            <p>60₱</p>
+            <p id="stock11">In Stock: 30</p>
+            <button onclick="addToCart(11)">Add to Cart</button>
+          </div>
+          <div class="product-card">
+              <img src="Chocolate Sundae.png" alt="Product 12">
+              <h3>Chocolate Sundae</h3>
+              <p>35₱</p>
+              <p id="stock12">In Stock: 40</p>
+              <button onclick="addToCart(12)">Add to Cart</button>
+
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <!-- cart -->
+<div id="cartModal" class="cart-modal">
+  <div class="cart-content">
+    <h2>Your Cart</h2>
+    <ul id="cartItems"></ul>
+    <label>Choose Payment Method:</label>
+    <select id="paymentMethod">
+      <option value="gcash">Gcash</option>
+      <option value="credit">Credit Card</option>
+      <option value="cash">Cash</option>
+    </select>
+    <button onclick="checkout()">Checkout</button>
+    <button onclick="closeCart()">Close</button>
+  </div>
+</div>
+
+<!-- receipt -->
+<div id="receipt" class="receipt d-none">
+  <h2>Receipt</h2>
+  <div id="receiptContent"></div>
+</div>
+
+<div id="receipt" class="d-none">
+  <h3>Receipt</h3>
+  <div id="receiptContent"></div>
+</div>
+
+<!-- cart -->
+<button class="cart-btn" onclick="openCart()">🛒 View Cart</button>
+
+<!-- payment -->
+<select id="paymentMethod">
+  <option value="Gcash">Gcash</option>
+  <option value="Credit Card">Credit Card</option>
+  <option value="Cash">Cash</option>
+</select>
+
+<input type="number" id="cashAmount" placeholder="Enter cash">
+
+
+
+<label for="cash">Cash Amount:</label>
+<input type="number" id="cashAmount" placeholder="Enter cash" />
+
+
+
+  <!--yaw sa ni hilabti -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 MyBrand. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
